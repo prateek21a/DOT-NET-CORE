@@ -1,0 +1,27 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+/* styles.css */
+.registration-container {
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Flogin&psig=AOvVaw2IIlwvNF8IrHl20uc7y90e&ust=1694023430754000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCIjX_JiHlIEDFQAAAAAdAAAAABAR');
+    background-size: cover; /* Adjust the size as needed */
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px; /* Add padding to your container if needed */
+    /* Additional styles for your container */
+}

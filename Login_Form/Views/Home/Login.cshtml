@@ -1,0 +1,143 @@
+﻿@model Login_Form.Models.UserTbl
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2>Login</h2>
+                </div>
+                <div class="card-body">
+                    @{
+                        if (ViewBag.Message != null)
+                        {
+                            <div class="alert alert-danger">
+                                @ViewBag.Message
+                            </div>
+                        }
+                        if (TempData["Success"] != null)
+                        {
+                            <div class="alert alert-success">
+                                @TempData["Success"]
+                            </div>
+                        }
+                    }
+                    <form asp-action="Login" method="post" id="loginForm">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password" class="control-label">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <br/>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
+                  
+                    <p class="text-center mt-3">
+                        <a asp-controller="Home" asp-action="Register" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-sign-in-alt"></i>Not Registered Yet ? Signup Here
+                        </a>
+                    </p>                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            // Add client-side validation rules
+            $("#loginForm").validate({
+                rules: {
+                    Email: {
+                        required: true,
+                        email: true // Validates that the input is a valid email address
+                    },
+                    Password: {
+                        required: true,
+                        minlength: 6 // Minimum password length
+                    }
+                },
+                messages: {
+                    Email: {
+                        required: "Email is required",
+                        email: "Please enter a valid email address"
+                    },
+                    Password: {
+                        required: "Password is required",
+                        minlength: "Password must be at least 6 characters long"
+                    }
+                }
+            });
+        });
+    </script>
+}
+
+@* @model Login_Form.Models.UserTbl
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<h4>UserTbl</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @{
+            if(ViewBag.Message != null)
+            {
+                <p style="color:red;">@ViewBag.Message</p>
+            }
+            if(TempData["Success"] != null)
+            {
+                <p style="color:green;">@TempData["Success"]</p>
+
+                
+            }
+        }
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+        <br/>
+        <p>
+            <a asp-controller="Home" asp-action="Register">Not Registered Yet ? click Here To Signup</a>
+        </p>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+ *@

@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    string userRole = ViewBag.MySession;
+    string welcomeMessage = "Welcome " + userRole; 
+
+}
+
+<h1>Dashboard</h1>
+<h2>@welcomeMessage</h2>
+
+<a asp-controller="Home" asp-action="Logout" class="btn btn-primary">Logout</a>
